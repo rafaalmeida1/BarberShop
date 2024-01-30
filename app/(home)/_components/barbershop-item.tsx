@@ -11,7 +11,7 @@ interface IBarbershopItem {
 
 export default function BarbershopItem({ barbershop }: IBarbershopItem) {
     return (
-        <Card className="min-w-[167px] max-w-[167px] bg-zinc-900 rounded-2xl">
+        <Card className="min-w-[167px] max-w-[167px] bg-zinc-900 rounded-2xl transform hover:-translate-y-2 transition-all duration-200">
             <CardContent className="px-1 py-0">
                 <div className="h-[159px] relative w-full">
                     <div className="absolute z-50 left-1 top-2">

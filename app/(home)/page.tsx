@@ -38,7 +38,7 @@ export default async function Home() {
                     Recomendados
                 </h2>
 
-                <div className="[&::-webkit-scrollbar]:hidden flex gap-4 px-5 overflow-x-auto">
+                <div className="[&::-webkit-scrollbar]:hidden flex gap-4 -mt-6 pt-6 px-5 overflow-x-auto">
                     {barbershops.map((barbershop) => (
                         <BarbershopItem
                             key={barbershop.id}
@@ -53,7 +53,7 @@ export default async function Home() {
                     Populares
                 </h2>
 
-                <div className="[&::-webkit-scrollbar]:hidden flex gap-4 px-5 overflow-x-auto">
+                <div className="[&::-webkit-scrollbar]:hidden flex gap-4 -mt-6 pt-6 px-5 overflow-x-auto">
                     {barbershops.map((barbershop) => (
                         <BarbershopItem
                             key={barbershop.id}
