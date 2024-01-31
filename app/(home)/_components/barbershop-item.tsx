@@ -1,17 +1,25 @@
+"use client";
+
 import { Badge } from "@/app/_components/ui/badge";
 import { Button } from "@/app/_components/ui/button";
 import { Card, CardContent } from "@/app/_components/ui/card";
 import { Barbershop } from "@prisma/client";
 import { StarIcon } from "lucide-react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 interface IBarbershopItem {
     barbershop: Barbershop;
 }
 
 export default function BarbershopItem({ barbershop }: IBarbershopItem) {
+    const router = useRouter();
+    const handleBookingClick = () => {
+        router.push(`/barbershops/${barbershop.id}`);
+    };
+
     return (
-        <Card className="min-w-[167px] max-w-[167px] bg-zinc-900 rounded-2xl transform hover:-translate-y-2 transition-all duration-200">
+        <Card className="min-w-[167px] max-w-[167px] bg-zinc-900 rounded-2xl transform hover:-translate-y-1 transition-all duration-200">
             <CardContent className="px-1 py-0">
                 <div className="h-[159px] relative w-full">
                     <div className="absolute z-50 left-1 top-2">
@@ -36,7 +44,7 @@ export default function BarbershopItem({ barbershop }: IBarbershopItem) {
                         style={{
                             objectFit: "cover",
                         }}
-                        className="rounded-2xl"
+                        className="rounded-2xl opacity-75"
                     />
                 </div>
 
@@ -47,7 +55,11 @@ export default function BarbershopItem({ barbershop }: IBarbershopItem) {
                     <p className="text-zinc-400 text-ellipsis text-nowrap mt-2 text-sm overflow-hidden">
                         {barbershop.address}
                     </p>
-                    <Button variant="secondary" className="mt-3 w-full">
+                    <Button
+                        variant="secondary"
+                        className="mt-3 w-full"
+                        onClick={handleBookingClick}
+                    >
                         Reservar
                     </Button>
                 </div>
