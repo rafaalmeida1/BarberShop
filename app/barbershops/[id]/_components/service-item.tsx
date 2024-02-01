@@ -1,13 +1,27 @@
+"use client";
+
 import { Button } from "@/app/_components/ui/button";
 import { Card, CardContent } from "@/app/_components/ui/card";
 import { Service } from "@prisma/client";
+import { signIn } from "next-auth/react";
 import Image from "next/image";
 
 interface IServiteItem {
     service: Service;
+    isAuthenticated?: Boolean;
 }
 
-export default function ServiceItem({ service }: IServiteItem) {
+export default function ServiceItem({
+    service,
+    isAuthenticated,
+}: IServiteItem) {
+    const handleClickOnBooking = () => {
+        if (!isAuthenticated) {
+            signIn("google");
+        } else {
+            alert("reservado vacilão");
+        }
+    };
     return (
         <Card className="hover:border-zinc-400 border transition-all duration-150">
             <CardContent className="p-3">
@@ -34,7 +48,12 @@ export default function ServiceItem({ service }: IServiteItem) {
                                     currency: "BRL",
                                 }).format(Number(service.price))}
                             </p>
-                            <Button variant="secondary">Reservar</Button>
+                            <Button
+                                variant="secondary"
+                                onClick={handleClickOnBooking}
+                            >
+                                Reservar
+                            </Button>
                         </div>
                     </div>
                 </div>

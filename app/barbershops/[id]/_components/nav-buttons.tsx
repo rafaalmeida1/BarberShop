@@ -10,9 +10,10 @@ interface NavButtonsProps {
     barbershop: {
         services: Service[];
     } & Barbershop;
+    isAuthenticated: Boolean;
 }
 
-const NavButtons = ({ barbershop }: NavButtonsProps) => {
+const NavButtons = ({ barbershop, isAuthenticated }: NavButtonsProps) => {
     const [activeTab, setActiveTab] = useState<"services" | "info">("services");
 
     function changeTab(tab: "services" | "info") {
@@ -47,7 +48,11 @@ const NavButtons = ({ barbershop }: NavButtonsProps) => {
             </div>
             {activeTab === "services" ? (
                 barbershop.services.map((service) => (
-                    <ServiceItem key={service.id} service={service} />
+                    <ServiceItem
+                        key={service.id}
+                        service={service}
+                        isAuthenticated={isAuthenticated}
+                    />
                 ))
             ) : (
                 <span className="mt-10 text-center text-gray-400 text-sm">
