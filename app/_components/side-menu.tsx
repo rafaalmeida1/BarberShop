@@ -24,7 +24,7 @@ interface ISideMenu {
 }
 
 export default function SideMenu({ buttonSize, variants }: ISideMenu) {
-    const { data, status } = useSession();
+    const { data } = useSession();
 
     return (
         <Sheet>
