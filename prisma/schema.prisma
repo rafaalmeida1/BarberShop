@@ -47,13 +47,13 @@ model Booking {
   user         User       @relation(fields: [userId], references: [id])
   serviceId    String
   service      Service    @relation(fields: [serviceId], references: [id])
-  date         DateTime
-  status       String
   barbershopId String
   barbershop   Barbershop @relation(fields: [barbershopId], references: [id])
-  createdAt    DateTime   @default(now())
-  updatedAt    DateTime   @updatedAt
+  date         DateTime
+  status       String
 }
+
+// Auth Google Schema
 
 model Account {
   id                String  @id @default(cuid())
