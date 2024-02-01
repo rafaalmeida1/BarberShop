@@ -5,23 +5,15 @@ import Search from "./_components/search";
 import BookingItem from "../_components/booking-item";
 import { db } from "../_lib/prisma";
 import BarbershopItem from "./_components/barbershop-item";
+import UserInfo from "./_components/user-info";
 
 export default async function Home() {
     const barbershops = await db.barbershop.findMany({});
-
     return (
         <div>
             <Header />
 
-            <div className="pt-5 px-5">
-                <h2 className="text-xl font-bold">Olá, Rafa!</h2>
-                <p className="text-sm capitalize">
-                    {format(new Date(), "EEEE',' dd 'de' MMMM", {
-                        locale: ptBR,
-                    })}
-                </p>
-            </div>
-
+            <UserInfo />
             <div className="mt-6 px-5">
                 <Search />
             </div>

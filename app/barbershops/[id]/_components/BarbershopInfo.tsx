@@ -1,5 +1,6 @@
 "use client";
 
+import SideMenu from "@/app/_components/side-menu";
 import { Button } from "@/app/_components/ui/button";
 import { Barbershop } from "@prisma/client";
 import { ChevronLeftIcon, MapPinIcon, MenuIcon, StarIcon } from "lucide-react";
@@ -26,13 +27,7 @@ export default function BarbershopInfo({ barbershop }: IBarbershopInfo) {
                 >
                     <ChevronLeftIcon />
                 </Button>
-                <Button
-                    size="icon"
-                    variant="outline"
-                    className="absolute z-50 right-3 top-3"
-                >
-                    <MenuIcon />
-                </Button>
+                <SideMenu variants="absolute z-50 right-3 top-3" />
                 <Image
                     src={barbershop.imageUrl}
                     fill
